@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.ayalfishey.hordeinc.fragments.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_minionsFragment"
+            app:destination="@id/minionsFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/no_anim"
+            app:popEnterAnim="@anim/slide_down"
+            app:popExitAnim="@anim/no_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_explorationFragment"
+            app:destination="@id/explorationFragment"
+            app:enterAnim="@anim/slide_up"
+            app:popEnterAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/minionsFragment"
+        android:name="com.ayalfishey.hordeinc.fragments.MinionsFragment"
+        android:label="fragment_minions"
+        tools:layout="@layout/fragment_minions" >
+        <action
+            android:id="@+id/action_minionsFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/reveal_anim"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/no_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/explorationFragment"
+        android:name="com.ayalfishey.hordeinc.fragments.ExplorationFragment"
+        android:label="fragment_exploration"
+        tools:layout="@layout/fragment_exploration" >
+        <action
+            android:id="@+id/action_explorationFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,27 @@
+Main Screen:
+Castle Landscape
+Navigation Button Art
+
+Minion Fragment:
+15 Minions
+Minion Ui Art
+
+Exploration:
+Hero Animation Top Bar
+Exploration Ui Art
+30 Artifacts 
+5 Resorces
+
+Spells:
+10 Spell
+
+Upgrade:
+Basic Ui Art
+
+Hero:
+Hero Vesuvian Man
+Artifact Ui Menu Art 
+
+
+
+

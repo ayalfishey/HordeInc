@@ -13,8 +13,8 @@ import com.ayalfishey.hordeinc.databinding.MinionCellBinding
 
 class MinionAdapter : RecyclerView.Adapter<MinionAdapter.MinionHolder>() {
 
-    private val details = arrayOf("test detail 1", "test detail 2")
-    private val images = intArrayOf(R.drawable.reaper, R.drawable.reaper)
+    private val details = arrayOf("test detail 1", "test detail 2", "test detail 3")
+    private val images = intArrayOf(R.drawable.reaper, R.drawable.reaper, R.drawable.reaper)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MinionHolder {
         val view = MinionCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,7 +22,8 @@ class MinionAdapter : RecyclerView.Adapter<MinionAdapter.MinionHolder>() {
     }
 
     override fun onBindViewHolder(holder: MinionHolder, position: Int) {
-        holder.binding.minionDetails.text = details[position]
+//        holder.binding.minionDetails.text = details[position]
+        holder.binding.minionDetails.setImageResource(R.drawable.pngegg_copy)
         holder.binding.minionImage.setImageResource(images[position])
     }
 

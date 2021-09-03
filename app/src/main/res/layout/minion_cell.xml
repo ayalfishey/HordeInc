@@ -3,22 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="100dp"
+    android:background="#fff"
+    >
 
     <ImageView
+        app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/minionImage"
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:background="#000000"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
+    <ImageView
         android:id="@+id/minionDetails"
-        android:layout_width="150dp"
+        android:layout_width="450dp"
         android:layout_height="60dp"
-        android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/minionImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY"/>
 
     <Button
         android:id="@+id/combineButton"
