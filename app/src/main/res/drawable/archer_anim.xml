@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/archer_walk5" android:duration="100" />
+    <item android:drawable="@drawable/archer_walk6" android:duration="100" />
+    <item android:drawable="@drawable/archer_walk7" android:duration="100" />
+    <item android:drawable="@drawable/archer_walk8" android:duration="100" />
+    <item android:drawable="@drawable/archer_walk9" android:duration="100" />
+    <item android:drawable="@drawable/archer_walk10" android:duration="100" />
+    <item android:drawable="@drawable/archer_walk11" android:duration="100" />
+    <item android:drawable="@drawable/archer_walk12" android:duration="100" />
+
+</animation-list>
