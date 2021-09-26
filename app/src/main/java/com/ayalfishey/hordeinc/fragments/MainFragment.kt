@@ -10,10 +10,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private lateinit var binding : FragmentMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

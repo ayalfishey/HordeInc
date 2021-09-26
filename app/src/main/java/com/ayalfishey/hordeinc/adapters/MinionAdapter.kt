@@ -36,7 +36,5 @@ class MinionAdapter : RecyclerView.Adapter<MinionAdapter.MinionHolder>() {
         return details.size
     }
 
-    inner class MinionHolder (val binding : MinionCellBinding) : RecyclerView.ViewHolder(binding.root){
-
-    }
+    inner class MinionHolder (val binding : MinionCellBinding) : RecyclerView.ViewHolder(binding.root)
 }

@@ -33,6 +33,7 @@
             app:destination="@id/mainFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/reveal_anim"
+            app:launchSingleTop="false"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/no_anim" />
     </fragment>
@@ -43,6 +44,11 @@
         tools:layout="@layout/fragment_exploration" >
         <action
             android:id="@+id/action_explorationFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/reveal_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/no_anim" />
     </fragment>
 </navigation>

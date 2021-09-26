@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programmming/HordeInc/app/src/main/res/drawable/custom_button.xml" value="0.28177083333333336" />
         <entry key="..\:/Programmming/HordeInc/app/src/main/res/drawable/pesent_anim.xml" value="0.22135416666666666" />
+        <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.23560910307898258" />
+        <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/activity_login.xml" value="0.265625" />
         <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/activity_splash.xml" value="0.20572916666666666" />
         <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/fragment_exploration.xml" value="0.20520833333333333" />
+        <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/fragment_forgot.xml" value="0.35260416666666666" />
+        <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/fragment_main.xml" value="0.2015625" />
         <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/fragment_minions.xml" value="0.20572916666666666" />
+        <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/fragment_register.xml" value="0.35260416666666666" />
         <entry key="..\:/Programmming/HordeInc/app/src/main/res/layout/minion_cell.xml" value="0.33" />
       </map>
     </option>
