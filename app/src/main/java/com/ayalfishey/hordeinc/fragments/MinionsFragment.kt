@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ayalfishey.hordeinc.R
 import com.ayalfishey.hordeinc.adapters.MinionAdapter
+import com.ayalfishey.hordeinc.classes.Minion
+import com.ayalfishey.hordeinc.data.GameData
+import com.ayalfishey.hordeinc.data.Minions
 import com.ayalfishey.hordeinc.databinding.FragmentMainBinding
 import com.ayalfishey.hordeinc.databinding.FragmentMinionsBinding
 
@@ -39,29 +42,18 @@ class MinionsFragment : Fragment(R.layout.fragment_minions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentMinionsBinding.bind(view)
-        var layoutManager = LinearLayoutManager(activity)
+        val layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = MinionAdapter()
+        binding.recyclerView.adapter = MinionAdapter(GameData.minions)
+        adapter = binding.recyclerView.adapter as MinionAdapter
+
     }
 
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MinionsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MinionsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        fun notifyAdapter(pos : Int){
+            adapter.notifyItemChanged(pos)
+        }
+        private lateinit var adapter : MinionAdapter
     }
 }

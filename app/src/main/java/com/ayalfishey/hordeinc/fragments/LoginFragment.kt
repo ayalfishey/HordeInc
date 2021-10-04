@@ -33,7 +33,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.forgotText.setOnClickListener {
             view.findNavController().navigate(R.id.action_loginFragment_to_forgotFragment)
         }
-        binding.loginButton.setOnClickListener(){
+        binding.loginButton.setOnClickListener {
             loginUser()
         }
     }
@@ -42,49 +42,54 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun loginUser() {
         val email = binding.editTextTextEmailAddress.text.toString().trim { it <= ' ' }
         val password = binding.editTextTextPassword.text.toString().trim { it <= ' ' }
+        if (isEmailPasswordValid(email, password)) {
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Toast.makeText(
+                        context,
+                        "User has been logged in successfully",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    val intent = Intent(context, MainActivity::class.java)
+                    intent.putExtra("user_id", auth.currentUser!!.uid)
+                    intent.putExtra("email_id", email)
+                    startActivity(intent)
+                    activity?.finish()
+                } else {
+                    Toast.makeText(
+                        context,
+                        "Failed to login. Try again, " + it.exception!!.toString(),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
+    }
+
+    private fun isEmailPasswordValid(email : String, password : String): Boolean {
         if (email.isEmpty()) {
-            binding.editTextTextEmailAddress.setError("Email is required")
+            binding.editTextTextEmailAddress.error = "Email is required"
             binding.editTextTextEmailAddress.requestFocus()
-            return
+            return false
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.editTextTextEmailAddress.setError("Please provide a valid email")
+            binding.editTextTextEmailAddress.error = "Please provide a valid email"
             binding.editTextTextEmailAddress.requestFocus()
-            return
+            return false
 
         }
         if (password.isEmpty()) {
-            binding.editTextTextPassword.setError("Password is required")
+            binding.editTextTextPassword.error = "Password is required"
             binding.editTextTextPassword.requestFocus()
-            return
+            return false
         }
         if (password.length < 6) {
-            binding.editTextTextPassword.setError("Password must be at least 6 characters long")
+            binding.editTextTextPassword.error = "Password must be at least 6 characters long"
             binding.editTextTextPassword.requestFocus()
-            return
+            return false
         }
-
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener() {
-            if (it.isSuccessful) {
-                Toast.makeText(
-                    context,
-                    "User has been logged in successfully",
-                    Toast.LENGTH_LONG
-                ).show()
-                val intent = Intent(context, MainActivity::class.java)
-                intent.putExtra("user_id", auth.currentUser!!.uid)
-                intent.putExtra("email_id", email)
-                startActivity(intent)
-                activity?.finish()
-            } else {
-                Toast.makeText(
-                    context,
-                    "Failed to Login. Try again, " + it.exception!!.toString(),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
+        return true
     }
 
 }
