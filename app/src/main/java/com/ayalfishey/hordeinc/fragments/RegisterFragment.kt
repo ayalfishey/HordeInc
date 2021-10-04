@@ -24,13 +24,12 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var auth: FirebaseAuth
-//    private lateinit var db : FirebaseFirestore
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentRegisterBinding.bind(view)
         auth = Firebase.auth
-//        db = Firebase.firestore
         binding.registerButton.setOnClickListener {
             registerUser()
         }
