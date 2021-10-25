@@ -1,22 +1,21 @@
 package com.ayalfishey.hordeinc.activitys
 
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.SystemClock
-
 import com.ayalfishey.hordeinc.data.GameData
-
 import com.ayalfishey.hordeinc.databinding.ActivitySplashBinding
+import com.ayalfishey.hordeinc.views.hideAndroidUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
+
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -28,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        hideAndroidUI()
         auth = Firebase.auth
         currentUser = auth.currentUser
         loadActivity()
