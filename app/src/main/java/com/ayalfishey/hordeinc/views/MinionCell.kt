@@ -5,7 +5,12 @@ import android.graphics.drawable.AnimationDrawable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.HandlerCompat.postDelayed
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewTreeLifecycleOwner
 import com.ayalfishey.hordeinc.R
 import com.ayalfishey.hordeinc.classes.Minion
 import com.ayalfishey.hordeinc.data.GameData
@@ -14,6 +19,7 @@ import com.ayalfishey.hordeinc.fragments.MinionsFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlin.concurrent.thread
 import kotlin.math.pow
 
 class MinionCell : ConstraintLayout{
@@ -23,6 +29,8 @@ class MinionCell : ConstraintLayout{
 
     var binding : MinionCellBinding = MinionCellBinding.inflate(LayoutInflater.from(context), this,true)
 
+    private var calculatedTotal : Long = 0
+
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -31,17 +39,23 @@ class MinionCell : ConstraintLayout{
 
     constructor(context: Context,attrs: AttributeSet?,defStyleAttr: Int,defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes)
 
+    private fun View.findViewTreeLifecycleOwner(): LifecycleOwner? = ViewTreeLifecycleOwner.get(this)
 
     private fun setListeners(minion: Minion) {
+        val coinObserver = Observer<Long>{ newCoinValue ->
+            binding.buy1Button.isEnabled = newCoinValue >= calculatedTotal
+            Log.d("observer", "setListeners: $calculatedTotal")
+        }
+        let { GameData.coins.observeForever(coinObserver) }
+
+        binding.buy1Button.isEnabled = GameData.coins.value!! >= calculatedTotal
         binding.buy1Button.setOnClickListener {
-            //TODO: if user has enough coins
-            if(true) {
                 db.collection("users").document(GameData.user?.email!!).update(mapOf(
                     "minions.${Minion.getMinionName(minion.minionNo)}.amount" to ++minion.amount
                 ))
+            GameData.coins.postValue(GameData.coins.value!! - calculatedTotal)
                 updateMinionCost(minion)
                 updateDetails(minion)
-            }
         }
 
         binding.combineButton.setOnClickListener {
@@ -69,43 +83,47 @@ class MinionCell : ConstraintLayout{
         }
 
     fun setupMinion(minion: Minion){
-        setListeners(minion)
         setMinionInfo(minion)
-
+        setListeners(minion)
     }
 
-    private fun setMinionInfo(minion : Minion){
-        val unitAnim : AnimationDrawable
 
-        binding.minionImage.apply{
-            setBackgroundResource(minion.sprite)
-            unitAnim = background as AnimationDrawable
+        private fun setMinionInfo(minion: Minion) {
+            val unitAnim: AnimationDrawable
+            binding.minionImage.apply {
+                setBackgroundResource(minion.sprite)
+                unitAnim = background as AnimationDrawable
+            }
+            unitAnim.start()
+            updateMinionCost(minion)
+            updateDetails(minion)
+            binding.minionDetails.setBackgroundResource(R.drawable.pngegg_copy)
+
         }
-        unitAnim.start()
-        updateMinionCost(minion)
-        updateDetails(minion)
-        binding.minionDetails.setBackgroundResource(R.drawable.pngegg_copy)
 
-    }
-
-    private fun updateDetails(minion: Minion) {
-        val minionName  = when (minion.minionNo) {
-            0 -> "Peasant"
-            1 -> "Archer"
-            2 -> "Rogue"
-            else -> ""
+        private fun updateDetails(minion: Minion) {
+            val minionName = when (minion.minionNo) {
+                0 -> "Peasant"
+                1 -> "Archer"
+                2 -> "Rogue"
+                else -> ""
+            }
+            binding.minionDetails.text = "\b${minionName}" +
+                    "\nAmount: ${minion.amount}    Power: ${
+                        if (minion.power == 0.1) {
+                            minion.power
+                        } else {
+                            minion.power.toLong()
+                        }
+                    }   Combine Cost: ${minion.combineCost}"
         }
-        binding.minionDetails.text = "\b${minionName}" +
-                "\nAmount: ${minion.amount}    Power: ${if (minion.power == 0.1) {minion.power}else{minion.power.toLong()}}   Combine Cost: ${minion.combineCost}"
-    }
 
-    private fun updateMinionCost(minion : Minion){
-        //TODO: add minion upgrade discount (BaseCost * MinionMulti.pow(amount-upgrade))
-        binding.costText.text =("Cost: " + (minion.cost * (GameData.MINION_MULTIPLIER).pow((minion.amount+minion.lostToCombine-minion.combined).toDouble())).toLong().toString())
-        Log.d("MinionData", "Cost: " + (minion.cost * (GameData.MINION_MULTIPLIER).pow((minion.amount-minion.combined).toDouble()/*-upgrades*/)).toString())
-    }
-
-
+        private fun updateMinionCost(minion: Minion) {
+            //TODO: add minion upgrade discount (BaseCost * MinionMulti.pow(amount-upgrade))
+            calculatedTotal = (minion.cost * (GameData.MINION_MULTIPLIER).pow((minion.amount + minion.lostToCombine - minion.combined).toDouble())).toLong()
+            binding.costText.text = ("Cost: $calculatedTotal")
+            Log.d("MinionData", "Cost: $calculatedTotal")
+        }
 }
 /* First Attempt at getting and setting
                 db.collection("users").document(GameData.user?.email!!).get()

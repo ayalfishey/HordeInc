@@ -70,10 +70,11 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     "User has been registered successfully",
                     Toast.LENGTH_LONG
                 ).show()
-                //TODO: Redo minions in Database to hold minion object
-                //Writing to db new user
+                //Writing new user to db
                 val user = hashMapOf(
                     "exploration" to 0,
+                    "coins" to 0,
+                    "collect timer" to 0,
                     "minions" to hashMapOf<String,HashMap<String,Long>>(
                         "peasant" to hashMapOf<String, Long>(
                             "amount" to 0,

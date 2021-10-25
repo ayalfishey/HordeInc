@@ -53,35 +53,55 @@
 <!--        android:text="Minions"-->
 <!--        android:textScaleX="2"-->
 
-        <ImageView
-            android:id="@+id/minionButton"
+        <TextView
+            android:id="@+id/minion_button"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:scaleY="2"
-            app:srcCompat="@drawable/glossy_button_paint1" />
+            android:background="@drawable/button1"
+            android:text="Minions"
+            android:textSize="25sp"
+            android:gravity="center" />
 
-        <ToggleButton
-            android:id="@+id/explorationToggle"
-            android:text="exploration"
+        <TextView
+            android:id="@+id/exploration_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Exploration"
+            android:textSize="25sp"
+            android:background="@drawable/button1"
+            android:gravity="center" />
 
-        <ToggleButton
+        <TextView
+            android:id="@+id/upgrades_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Upgrades"
+            android:textSize="25sp"
+            android:background="@drawable/button1"
+            android:gravity="center"/>
 
-        <ToggleButton
+        <TextView
+            android:id="@+id/hero_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Hero"
+            android:textSize="25sp"
+            android:background="@drawable/button1"
+            android:gravity="center"/>
 
-        <ToggleButton
+        <TextView
+            android:id="@+id/settings_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="Settings"
+            android:textSize="25sp"
+            android:background="@drawable/button1"
+            android:gravity="center"/>
 
     </LinearLayout>
 

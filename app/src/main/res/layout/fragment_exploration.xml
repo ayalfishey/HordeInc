@@ -1,14 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ExplorationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/grass_landscape2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/powerCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Unlimited Powaaa"
+        android:textColorHighlight="#a356"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@android:drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/floatingActionButton2" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/floatingActionButton3" />
+
+    <ToggleButton
+        android:id="@+id/auto_progress_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:scaleX="0.5"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintBottom_toTopOf="@+id/monster_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/monster_img" />
+
+    <ProgressBar
+        android:id="@+id/hero_hp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="100"
+        android:progressTint="#D50000"
+        app:layout_constraintBottom_toTopOf="@+id/hero_img"
+        app:layout_constraintEnd_toEndOf="@+id/hero_img"
+        app:layout_constraintStart_toStartOf="@+id/hero_img" />
+
+    <ProgressBar
+        android:id="@+id/monster_hp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="24dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="100"
+        android:progressTint="#D50000"
+        app:layout_constraintBottom_toTopOf="@+id/monster_img"
+        app:layout_constraintEnd_toEndOf="@+id/monster_img"
+        app:layout_constraintStart_toStartOf="@+id/monster_img" />
+
+    <TextView
+        android:text="PH"
+        android:gravity="center"
+        android:textColor="#FF0000"
+        android:id="@+id/monster_img"
+        android:layout_width="224dp"
+        android:layout_height="187dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
+        android:backgroundTintMode="multiply"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:text="PH"
+        android:textColor="#FF0000"
+        android:id="@+id/hero_img"
+        android:layout_width="149dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="104dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.661" />
+
+    <TextView
+        android:id="@+id/monster_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/monster_img"
+        app:layout_constraintStart_toStartOf="@+id/monster_img"
+        app:layout_constraintTop_toBottomOf="@+id/monster_img" />
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/next"
+        android:scaleX="0.5"
+        app:layout_constraintBottom_toBottomOf="@+id/monster_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/monster_img" />
+
+    <Button
+        android:id="@+id/previous_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/previous"
+        android:scaleX="0.5"
+        app:layout_constraintBottom_toBottomOf="@+id/monster_img"
+        app:layout_constraintEnd_toStartOf="@+id/monster_img" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ package com.ayalfishey.hordeinc.activitys
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.SystemClock
 
 import com.ayalfishey.hordeinc.data.GameData
 
@@ -13,6 +14,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class SplashActivity : AppCompatActivity() {
 
@@ -26,8 +30,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         auth = Firebase.auth
         currentUser = auth.currentUser
+        loadActivity()
+    }
+    private  fun loadActivity(){
         if(currentUser != null){
-            GameData.loadInfo()
+            runBlocking { GameData.loadInfo()}
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -38,5 +45,4 @@ class SplashActivity : AppCompatActivity() {
             finish()
         }
     }
-
 }

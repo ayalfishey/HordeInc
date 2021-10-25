@@ -49,6 +49,11 @@ class MinionsFragment : Fragment(R.layout.fragment_minions) {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        adapter.notifyDataSetChanged()
+    }
+
 
     companion object {
         fun notifyAdapter(pos : Int){

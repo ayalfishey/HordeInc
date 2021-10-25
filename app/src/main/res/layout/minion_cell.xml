@@ -6,15 +6,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-
-    <ImageView
+    <FrameLayout
         app:layout_constraintLeft_toLeftOf="parent"
-        android:id="@+id/minionImage"
+        android:id="@+id/minionBackground"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:background="#000000"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:background="@drawable/grass_landscape3">
 
+        <TextView
+            android:id="@+id/minionImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="PH"
+            android:textColor="#FF0000"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </FrameLayout>
     <TextView
         android:id="@+id/minionDetails"
         android:layout_width="450dp"
@@ -25,7 +32,7 @@
         android:layout_height="60dp"
         android:scaleType="fitXY"
         android:background="@drawable/pngegg_copy"
-        app:layout_constraintStart_toEndOf="@+id/minionImage"
+        app:layout_constraintStart_toEndOf="@+id/minionBackground"
         android:gravity="center_horizontal"
         app:layout_constraintTop_toTopOf="parent">
     </TextView>
@@ -58,12 +65,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="2dp"
+        android:clickable="false"
         android:text="Buy"
+        android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/cost_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/combineButton"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="10sp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/cost_text"

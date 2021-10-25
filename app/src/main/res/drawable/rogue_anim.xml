@@ -8,12 +8,12 @@
     <item android:drawable="@drawable/rogue_walk6" android:duration="100" />
     <item android:drawable="@drawable/rogue_walk7" android:duration="100" />
     <item android:drawable="@drawable/rogue_walk8" android:duration="100" />
-    <item android:drawable="@drawable/rogue_walk9" android:duration="100" />
-    <item android:drawable="@drawable/rogue_walk10" android:duration="100" />
-    <item android:drawable="@drawable/rogue_walk11" android:duration="100" />
-    <item android:drawable="@drawable/rogue_walk12" android:duration="100" />
-    <item android:drawable="@drawable/rogue_walk13" android:duration="100" />
-    <item android:drawable="@drawable/rogue_walk14" android:duration="100" />
-    <item android:drawable="@drawable/rogue_walk15" android:duration="100" />
-    <item android:drawable="@drawable/rogue_walk16" android:duration="100" />
+<!--    <item android:drawable="@drawable/rogue_walk9" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/rogue_walk10" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/rogue_walk11" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/rogue_walk12" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/rogue_walk13" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/rogue_walk14" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/rogue_walk15" android:duration="100" />-->
+<!--    <item android:drawable="@drawable/rogue_walk16" android:duration="100" />-->
 </animation-list>
